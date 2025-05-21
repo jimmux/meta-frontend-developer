@@ -1,13 +1,132 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  /* Style guide colours */
+  --primary-olive: #495e57;
+  --primary-lemon: #f4ce14;
+  --secondary-salmon: #ee9972;
+  --secondary-salmon-light: #fbdabb;
+  --secondary-grey-light: #edefee;
+  --secondary-grey-dark: #333333;
+
+  /* Style guide typefaces */
+  --typeface-serif: Markazi, Cambria, Cochin, Georgia, Times, "Times New Roman",
+    serif;
+  --typeface-sans: Karla, Arial, Helvetica, sans-serif;
+  --font-size-xxl: 64pt;
+  --font-size-xl: 40pt;
+  --font-size-l: 20pt;
+  --font-size-m: 18pt;
+  --font-size-s: 16pt;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+}
+
+.title {
+  font-family: var(--typeface-serif);
+  font-size: var(--font-size-xxl);
+}
+
+.subtitle {
+  font-family: var(--typeface-serif);
+  font-size: var(--font-size-xl);
+}
+
+.section-title {
+  font-family: var(--typeface-sans);
+  font-size: var(--font-size-l);
+  font-weight: bolder;
+}
+
+.section-category {
+  font-family: var(--typeface-sans);
+  font-size: var(--font-size-s);
+  font-weight: bolder;
+}
+
+.card-title {
+  font-family: var(--typeface-sans);
+  font-size: var(--font-size-m);
+  font-weight: bold;
+}
+
+.lead {
+  font-family: var(--typeface-sans);
+  font-size: var(--font-size-m);
+}
+
+.highlight {
+  font-family: var(--typeface-sans);
+  font-size: var(--font-size-s);
+  font-weight: 200;
+}
+
+p {
+  font-family: var(--typeface-sans);
+  font-size: var(--font-size-2);
+  line-height: 150%;
+}
+
+.nav-menu {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-menu a {
+  text-decoration: solid;
+  color: black;
+}
+
+.nav-menu a:hover {
+  color: var(--primary-olive);
+}
+
+.nav-menu ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  list-style: none;
+}
+
+.nav-menu li {
+  margin-left: 1em;
+}
+
+.has-full-width {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-text {
+  color: white;
+  background-color: var(--primary-olive);
+  width: 100vw;
+  margin: 0;
+}
+
+.hero-text .title {
+  color: var(--primary-lemon);
+}
+
+.hero-image img {
+  width: 40%;
+}
+
+.card {
+  max-width: 20vw;
+  border-radius: 10px;
+}
+
+button {
+  background-color: var(--primary-lemon);
+  border-style: none;
+  border-radius: 1em;
+  padding: 1ex 1em 1ex 1em;
 }

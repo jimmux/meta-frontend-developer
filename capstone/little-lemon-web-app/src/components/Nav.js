@@ -1,28 +1,43 @@
 import logo from "../lib/logo.svg";
+import styles from "./Nav.module.css";
 
-const Nav = ({ className }) => {
+const menuItems = [
+  {
+    name: "Home",
+    href: ""
+  },
+  {
+    name: "About",
+    href: ""
+  },
+  {
+    name: "Menu",
+    href: ""
+  },
+  {
+    name: "Reservations",
+    href: ""
+  },
+  {
+    name: "Order Online",
+    href: ""
+  },
+  {
+    name: "Login",
+    href: ""
+  },
+];
+
+const Nav = () => {
   return (
-    <nav className={`nav-menu ${className}`}>
+    <nav className={`${styles.nav} to-page-width`}>
       <img src={logo} alt="Little Lemon Logo"></img>
-      <ul className="lead">
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="/">About</a>
-        </li>
-        <li>
-          <a href="/">Menu</a>
-        </li>
-        <li>
-          <a href="/">Reservations</a>
-        </li>
-        <li>
-          <a href="/">Order Online</a>
-        </li>
-        <li>
-          <a href="/">Login</a>
-        </li>
+      <ul className={`lead ${styles.menu}`}>
+        {menuItems.map(({ name, href }) => (
+          <li className={styles.item}>
+            <a href={href}>{name}</a>
+          </li>
+        ))}
       </ul>
     </nav>
   );

@@ -18,18 +18,71 @@
   --font-size-s: 16pt;
 }
 
-body {
-  margin: 0;
+/* Universal */
+
+/* body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+}
+
+@media only screen and (min-width: 769px) {
+  body > * {
+    max-width: 80vw;
+  }
+} */
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+p {
+  font-family: var(--typeface-sans);
+  font-size: var(--font-size-2);
+  line-height: 150%;
+}
+
+a {
+  text-decoration: solid;
+  color: black;
+}
+
+a:hover {
+  color: var(--primary-olive);
+}
+
+button {
+  background-color: var(--primary-lemon);
+  border-style: none;
+  border-radius: 1em;
+  padding: 1ex 1em 1ex 1em;
+}
+
+.to-page-width {
+  width: 100%;
+  margin: 1em;
+}
+
+@media only screen and (min-width: 769px) {
+  .to-page-width {
+    max-width: 80vw;
+  }
 }
 
 .title {
   font-family: var(--typeface-serif);
   font-size: var(--font-size-xxl);
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .subtitle {
   font-family: var(--typeface-serif);
   font-size: var(--font-size-xl);
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .section-title {
@@ -61,72 +114,12 @@ body {
   font-weight: 200;
 }
 
-p {
-  font-family: var(--typeface-sans);
-  font-size: var(--font-size-2);
-  line-height: 150%;
-}
-
-.nav-menu {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-menu a {
-  text-decoration: solid;
-  color: black;
-}
-
-.nav-menu a:hover {
-  color: var(--primary-olive);
-}
-
-.nav-menu ul {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
-  list-style: none;
-}
-
-.nav-menu li {
-  margin-left: 1em;
-}
-
-.has-full-width {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.hero-text {
-  color: white;
-  background-color: var(--primary-olive);
-  width: 100vw;
-  margin: 0;
-}
-
-.hero-text .title {
-  color: var(--primary-lemon);
-}
-
-.hero-image img {
-  width: 40%;
-}
-
 .card {
   max-width: 20vw;
   border-radius: 10px;
+  overflow: hidden;
 }
 
-button {
-  background-color: var(--primary-lemon);
-  border-style: none;
-  border-radius: 1em;
-  padding: 1ex 1em 1ex 1em;
+.color-lemon {
+  color: var(--primary-lemon);
 }

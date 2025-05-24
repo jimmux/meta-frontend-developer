@@ -1,0 +1,29 @@
+.header {
+  width: 100vw;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+
+  color: white;
+  background-color: var(--primary-olive);
+}
+
+.columns {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10em;
+}
+
+.text {
+  flex-grow: 1;
+}
+
+.frame {
+  flex-grow: 2;
+}
+
+.image {
+  width: 100%;
+}

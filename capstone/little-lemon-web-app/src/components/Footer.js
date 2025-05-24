@@ -1,5 +1,7 @@
+import styles from "./Footer.module.css";
+
 const Footer = () => {
-  return (<footer>
+  return (<footer className={`${styles.footer} to-page-width`}>
     <p>Copyright 2025</p>
   </footer>);
 }

@@ -1,29 +1,32 @@
-import Nav from "./Nav";
-import heroPhoto from "../lib/restaurant-food.jpg";
+import heroPhoto from "../lib/restaurant-food-square.jpg";
+import styles from "./Header.module.css";
 
 const Header = () => {
-  return (<header>
-    <Nav className="has-full-width"></Nav>
-    <section className="hero">
-      <div className="hero-text has-full-width">
-        <h1 className="title">
-          Little Lemon
-        </h1>
-        <h2 className="subtitle">
-          Chicago
-        </h2>
-        <p>
-          We are a family owned Mediterranean restaurant,
-          focused on traditional recipes served with a modern twist.
-        </p>
-        <button>
-          Reserve a Table
-        </button>
+  console.debug(styles);
+
+  return (<header className={styles.header}>
+    <div className={styles.content}>
+      <div className={"to-page-width " + styles.columns}>
+        <div className={styles.text}>
+          <h1 className="title color-lemon">
+            Little Lemon
+          </h1>
+          <h2 className="subtitle">
+            Chicago
+          </h2>
+          <p>
+            We are a family owned Mediterranean restaurant,
+            focused on traditional recipes served with a modern twist.
+          </p>
+          <button>
+            Reserve a Table
+          </button>
+        </div>
+        <div className={styles.frame}>
+          <img className={`card ${styles.image}`} src={heroPhoto} alt="Restaurant food" />
+        </div>
       </div>
-      <div className="hero-image card">
-        <img src={heroPhoto} alt="Restaurant food" />
-      </div>
-    </section>
+    </div>
   </header>);
 }
 

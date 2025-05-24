@@ -1,0 +1,23 @@
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 1ex;
+
+  list-style: none;
+  padding: 0;
+}
+
+.item {
+  gap: 1em;
+}

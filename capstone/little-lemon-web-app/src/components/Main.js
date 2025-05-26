@@ -6,8 +6,23 @@ import MenuPage from "./MenuPage";
 import BookingPage from "./BookingPage";
 import OrderPage from "./OrderPage";
 import LoginPage from "./LoginPage";
+import { useReducer } from "react";
 
 const Main = () => {
+  const initialiseTimes = (initial) => {
+    return [17, 18, 19, 20];
+  };
+
+  const updateTimes = (state, { type, value }) => {
+    if (type === "changeDate") {
+      return [17, 18, 19, 20];
+    }
+
+    throw Error("Unknown action.");
+  };
+
+  const [availableTimes, dispatchAvailableTimes] = useReducer(updateTimes, [], initialiseTimes);
+
   return (
     <main className={styles.main}>
       <BrowserRouter>
@@ -15,7 +30,13 @@ const Main = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/menu" element={<MenuPage />} />
-          <Route path="/booking" element={<BookingPage />} />
+          <Route
+            path="/booking"
+            element={
+              <BookingPage
+                availableTimes={availableTimes}
+                dispatchAvailableTimes={dispatchAvailableTimes}
+              />} />
           <Route path="/order" element={<OrderPage />} />
           <Route path="/login" element={<LoginPage />} />
         </Routes>

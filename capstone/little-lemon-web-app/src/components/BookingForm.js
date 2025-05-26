@@ -13,11 +13,14 @@ const DEFAULT_BOOKING = {
   occasion: "birthday"
 };
 
-const BookingForm = () => {
-  const [availableTimes, setAvailableTimes] = useState([17, 18, 19, 20]);
+const BookingForm = ({ availableTimes, dispatchAvailableTimes }) => {
   const [booking, setBooking] = useState(DEFAULT_BOOKING);
 
   const changeDate = (event) => {
+    dispatchAvailableTimes({
+      type: "changeDate",
+      value: event.target.value
+    });
     setBooking({
       ...booking,
       date: event.target.value

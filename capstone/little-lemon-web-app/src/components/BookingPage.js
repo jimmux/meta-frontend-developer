@@ -1,5 +1,7 @@
+import BookingForm from "./BookingForm";
+
 const BookingPage = () => {
-  return (<p>BookingPage</p>)
+  return (<BookingForm />)
 };
 
 export default BookingPage;

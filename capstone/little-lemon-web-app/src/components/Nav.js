@@ -1,41 +1,41 @@
-import logo from "../lib/logo.svg";
 import styles from "./Nav.module.css";
+// import { Link } from "react-router-dom";
 
 const menuItems = [
   {
     name: "Home",
-    href: ""
+    href: "/"
   },
   {
     name: "About",
-    href: ""
+    href: "/about"
   },
   {
     name: "Menu",
-    href: ""
+    href: "/menu"
   },
   {
     name: "Reservations",
-    href: ""
+    href: "/booking"
   },
   {
     name: "Order Online",
-    href: ""
+    href: "/order"
   },
   {
     name: "Login",
-    href: ""
+    href: "/login"
   },
 ];
 
 const Nav = () => {
   return (
-    <nav className={`${styles.nav} to-page-width`}>
-      <img src={logo} alt="Little Lemon Logo"></img>
+    <nav>
       <ul className={`lead ${styles.menu}`}>
         {menuItems.map(({ name, href }) => (
-          <li className={styles.item}>
+          <li>
             <a href={href}>{name}</a>
+            {/* <Link to={href} >{name}</Link> */}
           </li>
         ))}
       </ul>

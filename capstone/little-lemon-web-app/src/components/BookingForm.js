@@ -16,7 +16,7 @@ const DEFAULT_BOOKING = {
   occasion: "birthday"
 };
 
-const BookingForm = ({ availableTimes, dispatchAvailableTimes }) => {
+const BookingForm = ({ availableTimes, dispatchAvailableTimes, submitForm }) => {
   const [booking, setBooking] = useState({
     ...DEFAULT_BOOKING,
     time: availableTimes[0] ?? null
@@ -36,7 +36,7 @@ const BookingForm = ({ availableTimes, dispatchAvailableTimes }) => {
   const changeTime = (event) => {
     setBooking({
       ...booking,
-      time: Number(event.target.value)
+      time: event.target.value
     });
   }
 
@@ -56,13 +56,7 @@ const BookingForm = ({ availableTimes, dispatchAvailableTimes }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    if (submitAPI(booking)) {
-      setBooking(DEFAULT_BOOKING);
-      alert("Submitted!");
-    } else {
-      alert("Booking failed, please try again.")
-    }
+    submitForm(booking);
   }
 
   return (

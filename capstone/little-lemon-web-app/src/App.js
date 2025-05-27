@@ -1,3 +1,4 @@
+import { BrowserRouter } from "react-router";
 import './App.css';
 import Header from "./components/Header";
 import Main from './components/Main';
@@ -7,7 +8,9 @@ function App() {
   return (
     <>
       <Header />
-      <Main />
+      <BrowserRouter>
+        <Main />
+      </BrowserRouter>
       <Footer />
     </>
   );

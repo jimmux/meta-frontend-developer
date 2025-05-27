@@ -1,6 +1,6 @@
 import BookingForm from "./BookingForm";
 
-const BookingPage = ({ availableTimes, dispatchAvailableTimes }) => {
+const BookingPage = ({ availableTimes, dispatchAvailableTimes, submitForm }) => {
   return (
     <>
       <table>
@@ -22,6 +22,7 @@ const BookingPage = ({ availableTimes, dispatchAvailableTimes }) => {
       <BookingForm
         availableTimes={availableTimes}
         dispatchAvailableTimes={dispatchAvailableTimes}
+        submitForm={submitForm}
       />
     </>
   )

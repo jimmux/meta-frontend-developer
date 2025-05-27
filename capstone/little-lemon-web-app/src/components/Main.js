@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router";
 import styles from "./Main.module.css";
 import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
@@ -8,19 +8,19 @@ import OrderPage from "./OrderPage";
 import LoginPage from "./LoginPage";
 import { useReducer } from "react";
 
-const Main = () => {
-  const initialiseTimes = (initial) => {
+export const initialiseTimes = (initial) => {
+  return [17, 18, 19, 20];
+};
+
+export const updateTimes = (state, { type, value }) => {
+  if (type === "changeDate") {
     return [17, 18, 19, 20];
-  };
+  }
 
-  const updateTimes = (state, { type, value }) => {
-    if (type === "changeDate") {
-      return [17, 18, 19, 20];
-    }
+  throw Error("Unknown action.");
+};
 
-    throw Error("Unknown action.");
-  };
-
+const Main = () => {
   const [availableTimes, dispatchAvailableTimes] = useReducer(updateTimes, [], initialiseTimes);
 
   return (

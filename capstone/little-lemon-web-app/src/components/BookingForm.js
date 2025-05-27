@@ -1,6 +1,8 @@
 import styles from "./BookingForm.module.css";
 import { useState } from "react";
 
+// Todo: Add aria attributes
+
 const DEFAULT_TIME = new Date();
 
 const DEFAULT_BOOKING = {
@@ -17,7 +19,7 @@ const BookingForm = ({ availableTimes, dispatchAvailableTimes }) => {
   const [booking, setBooking] = useState(DEFAULT_BOOKING);
 
   const changeDate = (event) => {
-    dispatchAvailableTimes({
+    dispatchAvailableTimes?.({
       type: "changeDate",
       value: event.target.value
     });
@@ -51,7 +53,6 @@ const BookingForm = ({ availableTimes, dispatchAvailableTimes }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     alert("Submitted!");
-    console.debug(booking);
     setBooking(DEFAULT_BOOKING);
   }
 

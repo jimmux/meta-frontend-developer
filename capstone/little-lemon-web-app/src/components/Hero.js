@@ -2,8 +2,6 @@ import heroPhoto from "../lib/restaurant-food-square.jpg";
 import styles from "./Hero.module.css";
 
 const Hero = () => {
-  console.debug(styles);
-
   return (<div className={styles.hero}>
     <div className={styles.content}>
       <div className={"to-page-width " + styles.columns}>

@@ -45,7 +45,7 @@ const Specials = () => {
     <section className={styles.columns}>
       {
         details.map((detail) => (
-          <Special {...detail} />
+          <Special key={detail.name} {...detail} />
         )
         )}
     </section>

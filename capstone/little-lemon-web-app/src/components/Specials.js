@@ -31,7 +31,7 @@ const details = [
 ];
 
 const Specials = () => {
-  return (<main className={`to-page-width`}>
+  return (<div className={`to-page-width`}>
     <section className={styles.columns}>
       <h1 className="title">
         This week's specials!
@@ -49,7 +49,7 @@ const Specials = () => {
         )
         )}
     </section>
-  </main>);
+  </div>);
 }
 
 export default Specials;

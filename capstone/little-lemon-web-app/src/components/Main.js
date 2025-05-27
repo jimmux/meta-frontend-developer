@@ -7,14 +7,15 @@ import BookingPage from "./BookingPage";
 import OrderPage from "./OrderPage";
 import LoginPage from "./LoginPage";
 import { useReducer } from "react";
+import { fetchAPI, submitAPI } from "../api/booking";
 
-export const initialiseTimes = (initial) => {
-  return [17, 18, 19, 20];
+export const initialiseTimes = (_initial) => {
+  return fetchAPI(new Date());
 };
 
-export const updateTimes = (state, { type, value }) => {
+export const updateTimes = (_state, { type, value }) => {
   if (type === "changeDate") {
-    return [17, 18, 19, 20];
+    return fetchAPI(new Date(value));
   }
 
   throw Error("Unknown action.");

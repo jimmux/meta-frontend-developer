@@ -1,14 +1,15 @@
 import styles from "./BookingForm.module.css";
 import { useState } from "react";
+import { submitAPI } from "../api/booking";
 
-// Todo: Add aria attributes
+// Todo: Add aria attributes, handle no available times.
 
 const DEFAULT_TIME = new Date();
 
 const DEFAULT_BOOKING = {
   date: DEFAULT_TIME.toJSON().split("T").shift(),
   // 17:00 to 22:00
-  time: 17,
+  time: "17:00",
   // 1 to 10
   number: 2,
   // "birthday" or "anniversary"
@@ -16,7 +17,10 @@ const DEFAULT_BOOKING = {
 };
 
 const BookingForm = ({ availableTimes, dispatchAvailableTimes }) => {
-  const [booking, setBooking] = useState(DEFAULT_BOOKING);
+  const [booking, setBooking] = useState({
+    ...DEFAULT_BOOKING,
+    time: availableTimes[0] ?? null
+  });
 
   const changeDate = (event) => {
     dispatchAvailableTimes?.({
@@ -52,8 +56,13 @@ const BookingForm = ({ availableTimes, dispatchAvailableTimes }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert("Submitted!");
-    setBooking(DEFAULT_BOOKING);
+
+    if (submitAPI(booking)) {
+      setBooking(DEFAULT_BOOKING);
+      alert("Submitted!");
+    } else {
+      alert("Booking failed, please try again.")
+    }
   }
 
   return (
@@ -74,7 +83,7 @@ const BookingForm = ({ availableTimes, dispatchAvailableTimes }) => {
       >
         {availableTimes.map((time) => (
           <option key={time} value={time}>
-            {`${time}:00`}
+            {time}
           </option>
         ))}
       </select>

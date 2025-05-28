@@ -1,28 +1,46 @@
 // import { render, screen } from '@testing-library/react';
 import { initialiseTimes, updateTimes } from './Main';
 
-// Todo: Update for API changes
+describe("initialiseTimes", () => {
+  it("uses times for today", () => {
+    // Todo: Could use spies on fetchAPI instead;
+    const todayString = (new Date()).toJSON().split("T").shift();
+    const expectedTimes = updateTimes({}, { type: "changeDate", value: todayString });
 
-test('Initialise available times', () => {
-  [
-    [[], [17, 18, 19, 20]],
-    [[], [17, 18, 19, 20]]
-  ].forEach(([reducerInitial, expectedTimes]) => {
-    expect(initialiseTimes(reducerInitial)).toEqual(expectedTimes);
+    const availableTimes = initialiseTimes();
+    expect(availableTimes).toEqual(expectedTimes);
+    expect(availableTimes).not.toHaveLength(0);
   });
 });
 
-test('Updates available times based on the selected date', () => {
-  [
-    ["2025-01-01", [17, 18, 19, 20]],
-    ["1999-01-01", [17, 18, 19, 20]]
-  ].forEach(([selectedDate, expectedTimes]) => {
-    const STATE = {};
-    const ACTION = {
+describe("updateTimes", () => {
+  it.each([
+    [
+      "is correct for valid dates",
+      "2025-05-27",
+      ["17:00", "17:30", "18:00", "19:30", "21:30", "22:30", "23:30"]
+    ],
+    [
+      "varies times for different dates",
+      "2025-05-28",
+      ["17:00", "17:30", "18:00", "18:30", "19:30", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30"]
+    ],
+    [
+      "handles missing dates",
+      "",
+      []
+    ]
+  ])("%s", (_, selectedDate, expectedTimes) => {
+    const state = {};
+    const action = {
       type: "changeDate",
       value: selectedDate
     };
 
-    expect(updateTimes(STATE, ACTION)).toEqual(expectedTimes);
+    expect(updateTimes(state, action)).toEqual(expectedTimes);
+  });
+
+  it("handles unknown actions", () => {
+    expect(() => updateTimes([], { type: null, value: "2025-05-27" })).toThrow("Unknown action.");
   });
 });

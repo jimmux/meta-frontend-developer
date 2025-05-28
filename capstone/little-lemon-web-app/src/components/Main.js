@@ -6,7 +6,7 @@ import MenuPage from "./MenuPage";
 import BookingPage from "./BookingPage";
 import OrderPage from "./OrderPage";
 import LoginPage from "./LoginPage";
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 import { fetchAPI, submitAPI } from "../api/booking";
 import ConfirmedBooking from "./ConfirmedBooking";
 

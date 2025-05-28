@@ -19,7 +19,7 @@ const DEFAULT_BOOKING = {
 const BookingForm = ({ availableTimes, dispatchAvailableTimes, submitForm }) => {
   const [booking, setBooking] = useState({
     ...DEFAULT_BOOKING,
-    time: availableTimes[0] ?? null
+    time: availableTimes[0] ?? ""
   });
 
   const changeDate = (event) => {
@@ -56,7 +56,7 @@ const BookingForm = ({ availableTimes, dispatchAvailableTimes, submitForm }) => 
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    submitForm(booking);
+    submitForm?.(booking);
   }
 
   return (
@@ -89,6 +89,7 @@ const BookingForm = ({ availableTimes, dispatchAvailableTimes, submitForm }) => 
         max="10"
         id="guests"
         onChange={changeGuestNumber}
+        value={booking.number}
       />
       <label htmlFor="occasion">Occasion</label>
       <select

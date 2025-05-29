@@ -3,10 +3,12 @@ import { useState } from "react";
 import ValidationMessage from "./ValidationMessage";
 
 // Todo: Add aria attributes, handle no available times.
+// Maybe add validation for occasion, even though invalid
+// selections aren't possible, and add unit tests for all.
 
 const DEFAULT_TIME = new Date();
 
-const DEFAULT_BOOKING = {
+export const DEFAULT_BOOKING = {
   date: DEFAULT_TIME.toJSON().split("T").shift(),
   // 17:00 to 22:00
   time: "17:00",
@@ -18,23 +20,45 @@ const DEFAULT_BOOKING = {
   occasion: "birthday"
 };
 
-const dateValidation = (date) => {
-  if (date < (new Date()).toJSON().split("T").shift()) {
+export const getChicagoDateAndTime = (date) => {
+  // Format like "05/29/2025, 14:49"
+  const formatted = (date).toLocaleString(
+    "en-US",
+    {
+      timeZone: "America/Chicago",
+      hourCycle: "h24",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+
+  const [, month, day, year, time] = formatted
+    .match(/(\d\d)\/(\d\d)\/(\d\d\d\d), (\d\d:\d\d)/);
+
+  return [`${year}-${month}-${day}`, time];
+};
+
+export const dateValidation = (date) => {
+  const [today,] = getChicagoDateAndTime(new Date());
+  if (date < today) {
     return "Please select a date of today or later.";
   }
 
   return "";
 };
 
-const dateAndTimeValidation = (date, time) => {
-  if (new Date(`${date}T${time}`) < Date.now()) {
+export const dateAndTimeValidation = (date, time) => {
+  const [today, now] = getChicagoDateAndTime(new Date());
+  if (new Date(`${date}T${time}`) < new Date(`${today}T${now}`)) {
     return "Please select a future date and time.";
   }
 
   return "";
 }
 
-const nameValidation = (rawName) => {
+export const nameValidation = (rawName) => {
   const name = rawName.trim();
 
   if (name.length < 1) {
@@ -48,7 +72,7 @@ const nameValidation = (rawName) => {
   return "";
 }
 
-const numberValidation = (number) => {
+export const numberValidation = (number) => {
   if (number < 1) {
     return "Bookings require at least one guest."
   }
@@ -160,6 +184,7 @@ const BookingForm = ({ availableTimes, dispatchAvailableTimes, submitForm }) => 
         value={booking.date}
         min={DEFAULT_BOOKING.date}
         onChange={changeDate}
+        required
       />
       <ValidationMessage message={validation.date} />
 
@@ -168,6 +193,7 @@ const BookingForm = ({ availableTimes, dispatchAvailableTimes, submitForm }) => 
         id="time"
         value={booking.time}
         onChange={changeTime}
+        required
       >
         {availableTimes.map((time) => (
           <option key={time} value={time}>
@@ -198,6 +224,7 @@ const BookingForm = ({ availableTimes, dispatchAvailableTimes, submitForm }) => 
         id="guests"
         onChange={changeGuestNumber}
         value={booking.number}
+        required
       />
       <ValidationMessage message={validation.number} />
 
@@ -206,6 +233,7 @@ const BookingForm = ({ availableTimes, dispatchAvailableTimes, submitForm }) => 
         id="occasion"
         value={booking.occasion}
         onChange={changeOccasion}
+        required
       >
         <option value="birthday">Birthday</option>
         <option value="anniversary">Anniversary</option>

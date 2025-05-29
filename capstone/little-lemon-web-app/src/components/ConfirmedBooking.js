@@ -10,11 +10,20 @@ const formatDate = (date) => {
 };
 
 const ConfirmedBooking = () => {
-  const { date, time, number } = useParams();
+  const { date, time, number, name } = useParams();
 
-  return (<p>
-    Your booking for {number} people, at {time} on {formatDate(date)} is confirmed!
-  </p>)
+  return (
+    <>
+      <p>
+        Thank you for booking with Little Lemon, {name}!
+      </p>
+      <p>
+        We have reserved a table for {number} people, at {time} on {formatDate(date)}.
+      </p>
+      <p>
+        Bon appétit!
+      </p>
+    </>)
 };
 
 export default ConfirmedBooking;

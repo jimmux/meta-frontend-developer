@@ -28,7 +28,7 @@ const Main = () => {
 
   const submitForm = (data) => {
     if (submitAPI(data)) {
-      navigate(`/booking-confirmation/${data.date}/${data.time}/${data.number}`);
+      navigate(`/booking-confirmation/${data.date}/${data.time}/${data.number}/${data.name}`);
     } else {
       alert("Booking failed, please try again.")
     }
@@ -50,7 +50,7 @@ const Main = () => {
             />} />
         <Route path="/order" element={<OrderPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/booking-confirmation/:date/:time/:number" element={<ConfirmedBooking />} />
+        <Route path="/booking-confirmation/:date/:time/:number/:name" element={<ConfirmedBooking />} />
       </Routes>
     </main>
   );

@@ -1,10 +1,10 @@
-const ValidationMessage = ({ message }) => {
+const ValidationMessage = ({ message, ...rest }) => {
   if (!message) {
-    return (<p></p>);
+    return (<p {...rest}></p>);
   }
 
   return (
-    <p>
+    <p {...rest}>
       {message}
     </p>
   );

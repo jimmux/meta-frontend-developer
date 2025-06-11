@@ -185,8 +185,10 @@ const BookingForm = ({ availableTimes, dispatchAvailableTimes, submitForm }) => 
         min={DEFAULT_BOOKING.date}
         onChange={changeDate}
         required
+        aria-invalid={!!validation.date}
+        aria-errormessage="date-error"
       />
-      <ValidationMessage message={validation.date} />
+      <ValidationMessage id="date-error" message={validation.date} />
 
       <label htmlFor="time">Choose time</label>
       <select
@@ -194,6 +196,8 @@ const BookingForm = ({ availableTimes, dispatchAvailableTimes, submitForm }) => 
         value={booking.time}
         onChange={changeTime}
         required
+        aria-invalid={!!validation.time}
+        aria-errormessage="time-error"
       >
         {availableTimes.map((time) => (
           <option key={time} value={time}>
@@ -201,7 +205,7 @@ const BookingForm = ({ availableTimes, dispatchAvailableTimes, submitForm }) => 
           </option>
         ))}
       </select>
-      <ValidationMessage message={validation.time} />
+      <ValidationMessage id="time-error" message={validation.time} />
 
       <label htmlFor="name">Enter your name</label>
       <input
@@ -212,8 +216,10 @@ const BookingForm = ({ availableTimes, dispatchAvailableTimes, submitForm }) => 
         minLength={2}
         onChange={changeName}
         value={booking.name}
+        aria-invalid={!!validation.name}
+        aria-errormessage="name-error"
       ></input>
-      <ValidationMessage message={validation.name} />
+      <ValidationMessage id="name-error" message={validation.name} />
 
       <label htmlFor="guests">Number of guests</label>
       <input
@@ -225,8 +231,10 @@ const BookingForm = ({ availableTimes, dispatchAvailableTimes, submitForm }) => 
         onChange={changeGuestNumber}
         value={booking.number}
         required
+        aria-invalid={!!validation.number}
+        aria-errormessage="number-error"
       />
-      <ValidationMessage message={validation.number} />
+      <ValidationMessage id="number-error" message={validation.number} />
 
       <label htmlFor="occasion">Occasion</label>
       <select
@@ -238,7 +246,13 @@ const BookingForm = ({ availableTimes, dispatchAvailableTimes, submitForm }) => 
         <option value="birthday">Birthday</option>
         <option value="anniversary">Anniversary</option>
       </select>
-      <input type="submit" value="Make Your reservation" disabled={!canSubmit} />
+
+      <input
+        type="submit"
+        value="Make Your reservation"
+        disabled={!canSubmit}
+        aria-label="On Click"
+      />
     </form>
   );
 };

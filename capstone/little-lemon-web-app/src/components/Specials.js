@@ -31,24 +31,26 @@ const details = [
 ];
 
 const Specials = () => {
-  return (<div className={`to-page-width`}>
-    <section className={styles.columns}>
-      <h1 className="title">
-        This week's specials!
-      </h1>
-      <a href="/menu">
-        <button>
-          Online Menu
-        </button>
-      </a>
-    </section>
-    <section className={styles.columns}>
-      {
-        details.map((detail) => (
-          <Special key={detail.name} {...detail} />
-        )
-        )}
-    </section>
+  return (<div className={styles.content}>
+    <div className={`to-page-width`}>
+      <section className={styles.columns}>
+        <h1 className="title">
+          This week's specials!
+        </h1>
+        <a href="/menu">
+          <button>
+            Online Menu
+          </button>
+        </a>
+      </section>
+      <section className={styles.columns}>
+        {
+          details.map((detail) => (
+            <Special key={detail.name} {...detail} />
+          )
+          )}
+      </section>
+    </div>
   </div>);
 }
 

@@ -1,0 +1,16 @@
+.menu {
+  list-style: none;
+  padding: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1ex;
+}
+
+@media only screen and (min-width: 769px) {
+  .menu {
+    justify-content: space-between;
+  }
+}

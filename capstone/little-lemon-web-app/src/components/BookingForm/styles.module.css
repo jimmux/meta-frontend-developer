@@ -1,0 +1,23 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.item input {
+  max-width: 40%;
+}
+
+.confirm {
+  margin: 3em;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

@@ -1,0 +1,36 @@
+.special {
+  background-color: var(--secondary-grey-light);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+@media only screen and (min-width: 769px) {
+  .special {
+    max-width: 25vw;
+  }
+}
+
+.image {
+  max-width: 100%;
+}
+
+.copy {
+  flex-grow: 1;
+  padding: 1em;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+.price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

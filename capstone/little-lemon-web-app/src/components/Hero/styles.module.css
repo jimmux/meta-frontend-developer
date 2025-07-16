@@ -1,0 +1,42 @@
+.hero {
+  width: 100vw;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+
+  color: white;
+  background-color: var(--primary-olive);
+}
+
+.columns {
+  display: flex;
+  flex-direction: column;
+  column-gap: 3em;
+  row-gap: 2em;
+}
+
+@media only screen and (min-width: 769px) {
+  .columns {
+    flex-direction: row;
+  }
+}
+
+.text {
+  flex-grow: 1;
+}
+
+.frame {
+  flex-grow: 2;
+}
+
+@media only screen and (min-width: 769px) {
+  .frame {
+    max-width: 35vw;
+  }
+}
+
+.image {
+  max-width: 100%;
+}

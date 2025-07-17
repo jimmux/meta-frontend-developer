@@ -2,6 +2,6 @@
 
 ## Meta Frontend Developer coursework, delivered by Coursera
 
-*frontend-capstone* is the final project.
+The final capstone project can be run by going to `capstone/little-lemon-web-app` and running `npm start`.
 
 Other course directories provided for reference.
